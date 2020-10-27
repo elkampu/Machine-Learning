@@ -1,4 +1,5 @@
 import copy
+import random
 from Tile import Tile
 
 class TilesBoard:
@@ -42,12 +43,21 @@ class TilesBoard:
             totalMovesToEnd += ti.getMovesToEnd() # Using the loop to get the current moves left to win
             if (ti.canMove(self.tiles[0]) != "none"): # The tile class will remember if and where it can be moved
                 movableTiles.append(ti) # Adding the movable tile to a list
-        
+
         while x < len(movableTiles): # Checking if a move leads to a past state of the tile board
             for y in range(len(self.pastStates)):
                 if ((self.getPossibleState(movableTiles[x].getNumber())) == self.pastStates[y]):
                     movableTiles.pop(x) # Discarding it
                     x -= 1
+                    if (len(movableTiles) == 0):
+                        resetState = self.pastStates[random.randint (0, len(self.pastStates))]
+                        for l in range(len(resetState)):
+                            self.tiles[l].setPosition(resetState[l])
+
+                        for tile in self.tiles:
+                            self.tiles[tile.getNumber()].setAvMove("none")
+
+                        return
                     break
             
             x += 1

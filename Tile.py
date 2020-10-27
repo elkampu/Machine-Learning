@@ -69,6 +69,45 @@ class Tile:
         
         self.avMove = "none"
         return "none"
+
+    def setPosition (self, pos):
+        if (pos == 1):
+            self.X = 0
+            self.Y = 0
+            
+        if (pos == 2):
+            self.X = 1
+            self.Y = 0
+
+        if (pos == 3):
+            self.X = 2
+            self.Y = 0
+
+        if (pos == 4):
+            self.X = 2
+            self.Y = 1
+
+        if (pos == 5):
+            self.X = 2
+            self.Y = 2
+
+        if (pos == 6):
+            self.X = 1
+            self.Y = 2
+
+        if (pos == 7):
+            self.X = 0
+            self.Y = 2
+
+        if (pos == 8):
+            self.X = 0
+            self.Y = 1
+
+        if (pos == 9):
+            self.X = 1
+            self.Y = 1
+
+        return
         
     def getTempMovesToEnd(self):
         if (self.avMove == "right"):
